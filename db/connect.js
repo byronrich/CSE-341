@@ -1,23 +1,26 @@
-import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { MongoClient } from "mongodb";
+
 dotenv.config();
 
 let db;
 
-export const connectToDatabase = async () => {
+export const connectDB = async () => {
   const client = new MongoClient(process.env.MONGO_URI);
+
   try {
     await client.connect();
-    db = client.db('cse341'); // your database name
-    console.log('✅ Connected to MongoDB Atlas');
+    console.log("Connected to MongoDB Atlas");
+
+    db = client.db("cse341"); // your database name
   } catch (err) {
-    console.error('❌ MongoDB connection failed:', err.message);
+    console.error("MongoDB connection failed:", err.message);
   }
 };
 
-export const getDb = () => {
+export const getDB = () => {
   if (!db) {
-    throw new Error('Database not initialized');
+    throw new Error("Database not initialized");
   }
   return db;
 };
