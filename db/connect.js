@@ -10,11 +10,12 @@ export const connectDB = async () => {
 
   try {
     await client.connect();
-    console.log("Connected to MongoDB Atlas");
+    console.log("✅ Connected to MongoDB Atlas as alexmongo");
 
-    db = client.db("cse341"); // your database name
+    // Match your database name in Atlas
+    db = client.db("cse341");
   } catch (err) {
-    console.error("MongoDB connection failed:", err.message);
+    console.error("❌ MongoDB connection failed:", err.message);
   }
 };
 

@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import contactsRoutes from "./routes/contacts.js";
-import { connectDB } from "./db/connect.js";   // ⬅ ADD THIS
+import { connectDB } from "./db/connect.js";
 
 dotenv.config();
 
