@@ -4,13 +4,20 @@ import dotenv from "dotenv";
 import contactsRoutes from "./routes/contacts.js";
 import { connectDB } from "./db/connect.js";
 
+// Swagger imports
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger.json" assert { type: "json" };
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ROUTES
+// Swagger route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// API routes
 app.use("/contacts", contactsRoutes);
 
 // CONNECT TO DB, THEN START SERVER
